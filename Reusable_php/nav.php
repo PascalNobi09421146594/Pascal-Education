@@ -202,13 +202,13 @@
                             stroke-width="2">
                             <path d="M12 19v-7m0 0V5m0 7H5m7 0h7"></path>
                         </svg>
-                        Login
+                        <a style="color: white; text-decoration: none; " href="Login.php">Login</a>
                     </button>
 
                     <div style="width:1px; height:40px; background-color:#000; margin: 0 1.5rem;"></div>
 
                     <button class="styled-button">
-                        Sign up
+                        <a style="color: white; text-decoration: none; " href="Login.php">Sign Up</a>
                         <div class="inner-button">
                             <svg
                                 id="Arrow"

@@ -222,6 +222,7 @@
                         <div class="small text-black-50">We care about privacy, and will never share your data.</div>
                     </div>
                 </div>
+                
             </aside>
         </div>
     </section>
