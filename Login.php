@@ -1,3 +1,41 @@
+<?php
+    require_once "dbconnect.php";
+
+    if(isset($_POST["login"]))//$_Post is super global array
+    {
+        $email=$_POST["email"];//retrieve email value of users
+        $password=$_POST["password"]; //retrieve password of users
+
+        $sql="select* from user where email=?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$email]);
+        $userInfo=$stmt->fetch();
+
+        
+
+
+        if($userInfo)//checks password and hash match {
+            if( password_verify($password,$userInfo["password"])){
+                echo "Login success!";
+                header("Location: index.php");
+
+            } else{//password and hash doesn't match.
+                $errorMessage="Email or password might be incorrect!";
+
+            }//if end
+
+            else{//admin's filled email does not exist.
+                $errorMessage="Email or password might be incorrect!";
+            }
+        }
+    
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,7 +76,7 @@
                                 <div class="col-md-6 col-lg-7 d-flex align-items-center">
                                     <div class="card-body p-4 p-lg-5 text-black">
 
-                                        <form>
+                                        <form action="<?php echo $_SERVER['PHP_SELF'] ;?>" method="post">
 
                                             <div class="d-flex align-items-center mb-3 pb-1">
                                                 <img width="50px" height="50px" src="../Picture/Logo3.png">
@@ -49,18 +87,18 @@
 
                                             <div data-mdb-input-init class="form-outline mb-4">
                                                 <label class="form-label" for="email">Email address</label>
-                                                <input type="email" placeholder="Email address..." id="email" class="form-control form-control-lg" />
+                                                <input type="email" placeholder="Email address..." id="email" name="email" class="form-control form-control-lg" />
                                                 
                                             </div>
 
                                             <div data-mdb-input-init class="form-outline mb-4">
                                                  <label class="form-label" for="password">Password</label>
-                                                <input type="password" placeholder="Password..." id="password" class="form-control form-control-lg" />
+                                                <input type="password" placeholder="Password..." id="password" name="password" class="form-control form-control-lg" />
                                                
                                             </div>
 
                                             <div class="pt-1 mb-4">
-                                                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-lg btn-block" type="button">Login</button>
+                                                <button data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-lg btn-block" type="submit" name="login">Login</button>
                                             </div>
 
                                             <a class="small text-muted" href="#!">Forgot password?</a>

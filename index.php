@@ -1,7 +1,3 @@
-<?php
-
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -217,7 +213,7 @@
                     <div class="ms-xl-4">
                         <div class="input-group mb-2">
                             <input class="form-control" type="text" placeholder="Email address..." aria-label="Email address..." aria-describedby="button-newsletter" />
-                            <button class="btn btn-outline-light" id="button-newsletter" type="button">Sign up</button>
+                            <button class="btn btn-outline-light" id="button-newsletter" name="button" type="button">Sign up</button>
                         </div>
                         <div class="small text-black-50">We care about privacy, and will never share your data.</div>
                     </div>

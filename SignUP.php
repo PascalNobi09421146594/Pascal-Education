@@ -1,3 +1,45 @@
+<?php
+require_once "dbconnect.php";
+
+
+
+if (isset($_POST["submit"])) {
+    $username = $_POST["uname"];
+    $password = $_POST["password"];
+    $password2= $_POST["password2"];
+    $email = $_POST["email"];
+
+    if ($_POST["password"] !== $_POST["password2"]) {
+        die("Passwords do not match!");
+    }
+
+
+    try { //inserting data into database
+    
+        $stmt = $conn->prepare("INSERT INTO user (username, email, password) VALUES (:username, :email, :password)");
+        $flag = $stmt->execute([
+            ":username" => $username,
+            ":email"    => $email,
+            ":password" => password_hash($password,PASSWORD_DEFAULT)
+        ]);
+
+        
+        if ($flag) {
+            $message = "Sign up successfully!.";
+            $_SESSION['message'] = $message;
+            header("Location:Login.php");
+        }
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
+}
+
+
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,8 +55,9 @@
 
 <style>
     ::placeholder {
-        color: gray;          /* change color */
-        font-size: 14px;  
+        color: gray;
+        /* change color */
+        font-size: 14px;
     }
 </style>
 
@@ -24,7 +67,7 @@
         <?php require_once "Reusable_php/nav.php" ?>
     </div>
     <br>
-    
+
     <div class="SignUP">
         <section class="vh-80 bg-image"
             style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
@@ -36,26 +79,30 @@
                                 <div class="card-body p-5">
                                     <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-                                    <form>
+                                    <form method="post" action="">
 
                                         <div data-mdb-input-init class="form-outline mb-4">
-                                            <input type="text" id="name" class="form-control form-control-lg" placeholder="Enter your name"/>
                                             <label class="form-label" for="form3Example1cg">Your Name</label>
+                                            <input type="text" id="uname" name="uname" class="form-control form-control-lg" placeholder="Enter your name" />
+
                                         </div>
 
                                         <div data-mdb-input-init class="form-outline mb-4">
-                                            <input type="email" id="email" class="form-control form-control-lg" placeholder="Enter your Email"/>
                                             <label class="form-label" for="form3Example3cg">Your Email</label>
+                                            <input type="email" id="email" name="email" class="form-control form-control-lg" placeholder="Enter your Email" />
+
                                         </div>
 
                                         <div data-mdb-input-init class="form-outline mb-4">
-                                            <input type="password" id="password" class="form-control form-control-lg" placeholder="Enter password"/>
                                             <label class="form-label" for="form3Example4cg">Password</label>
+                                            <input type="password" id="password" name="password" class="form-control form-control-lg" placeholder="Enter password" />
+
                                         </div>
 
                                         <div data-mdb-input-init class="form-outline mb-4">
-                                            <input type="password" id="password2" class="form-control form-control-lg" placeholder="Enter password again" />
                                             <label class="form-label" for="form3Example4cdg">Repeat your password</label>
+                                            <input type="password" id="password2" name="password2" class="form-control form-control-lg" placeholder="Enter password again" />
+
                                         </div>
 
                                         <div class="form-check d-flex justify-content-center mb-5">
@@ -66,7 +113,7 @@
                                         </div>
 
                                         <div class="d-flex justify-content-center">
-                                            <button type="button" data-mdb-button-init
+                                            <button type="submit" name="submit" data-mdb-button-init
                                                 data-mdb-ripple-init class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
                                         </div>
 
@@ -84,6 +131,8 @@
         </section>
 
     </div>
+
+    <br>
 
     <div class="footer">
         <?php require_once "Reusable_php/footer.php" ?>

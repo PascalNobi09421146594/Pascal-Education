@@ -149,7 +149,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-bold">
 
                     <li class="nav-item mx-3">
-                        <a class="nav-link active text-dark" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active text-dark" aria-current="page" href="../index.php">Home</a>
                     </li>
 
 
