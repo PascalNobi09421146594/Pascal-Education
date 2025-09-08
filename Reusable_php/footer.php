@@ -32,7 +32,9 @@
                             <!-- Grid column -->
                             <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3 fw-bold">
                                 <h6 class="text-uppercase mb-5 font-weight-bold fw-bold ">
+                                    <img src="../Picture/PascalLogo.png" width="50px" height="50px" alt="">
                                     Pascal Education
+                                    
                                 </h6>
                                 <p>
                                     We are here to give the best experience with the education.
