@@ -128,27 +128,27 @@ elseif (isset($_POST['radioBtn'])) {
             border-radius: 8px;
             margin: 10px;
             padding: 20px;
-            width: 250px;
+            width: 350px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .course-card:hover {
-            background-color: #333;
-            color: #e8f5e9;
+            /* background-color: #333; */
+            color: #e1de3fff;
             border: 1px solid #c8e6c9;
             border-radius: 8px;
             margin: 10px;
             padding: 20px;
-            width: 250px;
-            box-shadow: 0 2px 5px rgba(251, 222, 3, 0.1);
+            width: 350px;
+            box-shadow: 0 2px 5px rgba(225, 205, 51, 1);
         }
 
 
 
 
-        .course-card h3 {
-            color: #2e7d32;
-        }
+        
+
+       
 
         footer {
             background-color: #2e7d32;
@@ -167,7 +167,7 @@ elseif (isset($_POST['radioBtn'])) {
     </div>
 
     <header>
-        <h1>Explore Top Educational Courses</h1>
+        <h1>Explore Available IGCSE Courses</h1>
         <p>Empower your future with curated learning experiences</p>
     </header>
 
@@ -183,10 +183,15 @@ elseif (isset($_POST['radioBtn'])) {
 
                         style="width:100%; height:150px; object-fit:cover; border-radius:5px;">
 
-                    <h3><?php echo htmlspecialchars($product['productName']); ?></h3>
+                        <br>
+                        <br>
+
+                    <h3><b><?php echo htmlspecialchars($product['productName']); ?></b></h3>
                     <p><b>Category:</b> <?php echo htmlspecialchars($product['category']); ?></p>
                     <p><b>Price:</b> $<?php echo number_format($product['price'], 2); ?></p>
-                    <p><?php echo htmlspecialchars($product['description']); ?></p>
+
+                    <!-- <p> <?php //echo htmlspecialchars($product['description']); ?></p> -->
+
                     <p><b>Qty:</b> <?php echo htmlspecialchars($product['qty']); ?></p>
                 </div>
             <?php endforeach; ?>
