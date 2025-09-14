@@ -155,19 +155,10 @@
 
 
                     <li class="nav-item dropdown mx-3 fw-bold">
-                        <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle text-dark" href="../order.php" id="navbarDropdown" role="button" aria-expanded="false">
                             Tutoring Subjects
                         </a>
 
-                        <ul class="dropdown-menu text-dark mx-3 fw-bold" aria-labelledby="navbarDropdown">
-
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
                     </li>
 
                     <li class="nav-item mx-3 fw-bold">

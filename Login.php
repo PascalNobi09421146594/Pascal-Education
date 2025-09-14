@@ -1,33 +1,38 @@
 <?php
+    session_start(); 
     require_once "dbconnect.php";
 
-    if(isset($_POST["login"]))//$_Post is super global array
-    {
-        $email=$_POST["email"];//retrieve email value of users
-        $password=$_POST["password"]; //retrieve password of users
+    if (isset($_POST["login"])) {
+    $email = $_POST["email"];
+    $password = $_POST["password"];
 
-        $sql="select* from user where email=?";
-        $stmt = $conn->prepare($sql);
-        $stmt->execute([$email]);
-        $userInfo=$stmt->fetch();
+    $sql = "SELECT * FROM user WHERE email=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$email]);
+    $userInfo = $stmt->fetch();
 
-        
+    if ($userInfo) {
+        if (password_verify($password, $userInfo["password"])) {
+            // ✅ Save user info into session
+            $_SESSION['UID'] = $userInfo["userID"];  // or whatever your PK is
+            $_SESSION['name'] = $userInfo["name"];
+            $_SESSION['email'] = $userInfo["email"];
 
-
-        if($userInfo)//checks password and hash match {
-            if( password_verify($password,$userInfo["password"])){
-                echo "Login success!";
+            // ✅ Redirect to original page or homepage
+            if (isset($_GET['redirect'])) {
+                header("Location: " . $_GET['redirect']);
+            } else {
                 header("Location: index.php");
-
-            } else{//password and hash doesn't match.
-                $errorMessage="Email or password might be incorrect!";
-
-            }//if end
-
-            else{//admin's filled email does not exist.
-                $errorMessage="Email or password might be incorrect!";
             }
+            exit();
+        } else {
+            $errorMessage = "Email or password might be incorrect!";
         }
+    } else {
+        $errorMessage = "Email or password might be incorrect!";
+    }
+}
+        
     
 
 ?>
