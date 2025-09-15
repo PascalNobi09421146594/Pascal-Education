@@ -48,19 +48,19 @@
                             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                                 <h6 class="text-uppercase mb-4 font-weight-bold fw-bold">Our Service</h6>
                                 <p>
-                                    <a href="#" class="text-black">Online Tutors</a>
+                                    <a href="../teacherView.php" class="text-black">Online Tutors</a>
                                 </p>
                                 <p>
-                                    <a href="#"  class="text-black">How it works</a>
+                                    <a href="../index.php"  class="text-black">How it works</a>
                                 </p>
                                 <p>
-                                    <a href="#" class="text-black">Pricing</a>
+                                    <a href="../order.php" class="text-black">Pricing</a>
                                 </p>
                                 <p>
-                                    <a href="#"  class="text-black">Subjects</a>
+                                    <a href="../order.php"  class="text-black">Subjects</a>
                                 </p>
                                 <p>
-                                    <a href="#"  class="text-black">FAQs</a>
+                                    <a href="../aboutUs.php"  class="text-black">FAQs</a>
                                 </p>
                             </div>
                             <!-- Grid column -->
@@ -73,16 +73,16 @@
                                     Our Company
                                 </h6>
                                 <p>
-                                    <a href="#" class="text-black">Terms & Conditions</a>
+                                    <a href="../aboutUs.php" class="text-black">Terms & Conditions</a>
                                 </p>
                                 <p>
-                                    <a href="#" class="text-black">Our Story</a>
+                                    <a href="../aboutUs.php" class="text-black">Our Story</a>
                                 </p>
                                 <p>
-                                    <a href="#" class="text-black">Privacy</a>
+                                    <a href="../aboutUs.php" class="text-black">Privacy</a>
                                 </p>
                                 <p>
-                                    <a href="#" class="text-black">Help</a>
+                                    <a href="../aboutUs.php" class="text-black">Help</a>
                                 </p>
                             </div>
 
@@ -93,7 +93,7 @@
                             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
                                 <h6 class="text-uppercase mb-4 font-weight-bold fw-bold">Contact</h6>
                                 <p><i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
-                                <p><i class="fas fa-envelope mr-3"></i> info@gmail.com</p>
+                                <p><i class="fas fa-envelope mr-3"></i> pascalsmovement@gmail.com</p>
                                 <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
                                 <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
                             </div>
@@ -127,25 +127,29 @@
                                 <a
                                     class="btn btn-outline-dark btn-floating m-1"
                                     class="text-black"
-                                    role="button"><i class="fab fa-facebook-f" style="color: black;"></i></a>
+                                    role="button"
+                                    href="https://www.facebook.com/"><i class="fab fa-facebook-f" style="color: black;"></i></a>
 
                                 <!-- Twitter -->
                                 <a
                                     class="btn btn-outline-dark btn-floating m-1"
                                     class="text-black"
-                                    role="button"><i class="fab fa-twitter"  style="color: black;"></i></a>
+                                    role="button"
+                                    href="https://x.com/"><i class="fab fa-twitter"  style="color: black;"></i></a>
 
                                 <!-- Google -->
                                 <a
                                     class="btn btn-outline-dark btn-floating m-1"
                                     class="text-black"
-                                    role="button"><i class="fab fa-google"  style="color: black;"></i></a>
+                                    role="button"
+                                    href="https://www.google.com"><i class="fab fa-google"  style="color: black;"></i></a>
 
                                 <!-- Instagram -->
                                 <a
                                     class="btn btn-outline-dark btn-floating m-1"
                                     class="text-black"
-                                    role="button"><i class="fab fa-instagram"  style="color: black;"></i></a>
+                                    role="button"
+                                    href="https://www.instagram.com/"><i class="fab fa-instagram"  style="color: black;"></i></a>
                             </div>
                             <!-- Grid column -->
                         </div>

@@ -1,6 +1,7 @@
 <?php
-
-
+if (!isset($_SESSION)) {
+    session_start();
+}
 ?>
 
 <!DOCTYPE html>
@@ -152,25 +153,8 @@
                         <a class="nav-link active text-dark" aria-current="page" href="../index.php">Home</a>
                     </li>
 
-
-
-                    <li class="nav-item dropdown mx-3 fw-bold">
-                        <a class="nav-link text-dark" href="../order.php" id="navbarDropdown" role="button" aria-expanded="false">
-                            Tutoring Subjects
-                        </a>
-
-                    </li>
-
                     <li class="nav-item mx-3 fw-bold">
-                        <a class="nav-link text-dark" href="#">Teachers</a>
-                    </li>
-
-                    <li class="nav-item mx-3 fw-bold">
-                        <a class="nav-link text-dark" href="#">Pricing</a>
-                    </li>
-
-                    <li class="nav-item mx-3 fw-bold">
-                        <a class="nav-link text-dark" href="#">About us</a>
+                        <a class="nav-link text-dark" href="../aboutUs.php">About us</a>
                     </li>
 
 
@@ -178,58 +162,98 @@
 
 
                 </ul>
-                
 
 
-                <form class="d-flex ">
-                    <button class="button">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="1.25rem"
-                            height="1.25rem"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2">
-                            <path d="M12 19v-7m0 0V5m0 7H5m7 0h7"></path>
-                        </svg>
-                        <a style="color: white; text-decoration: none; " href="../Login.php">Login</a>
-                    </button>
 
+                <?php if (isset($_SESSION['user'])): ?>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 fw-bold">
+                            <li class="nav-item dropdown mx-3 fw-bold">
+                                <a class="nav-link text-dark" href="../order.php" id="navbarDropdown" role="button" aria-expanded="false">
+                                    Tutoring Subjects
+                                </a>
+
+                            </li>
+
+                            <li class="nav-item mx-3 fw-bold">
+                                <a class="nav-link text-dark" href="../teacherView.php">Teachers</a>
+                            </li>
+
+                            <li class="nav-item mx-3 fw-bold">
+                                <a class="nav-link text-dark" href="../order.php">Pricing</a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                    <div class="d-flex align-items-center"></div>
+
+                    <form class="d-flex me-3" role="search" action="../order.php" method="GET">
+                        <input class="form-control me-2" type="search" name="search" placeholder="Search subjects..." aria-label="Search">
+                        <button class="btn btn-dark" type="submit">Search</button>
+                    </form>
+                    
+                    <span class="fw-bold text-dark me-3">
+                        <?= htmlspecialchars($_SESSION['user']['email']); ?>
+                    </span>
                     <div style="width:1px; height:40px; background-color:#000; margin: 0 1.5rem;"></div>
+                    <a href="../LogOut.php" class="btn btn-danger btn-sm fw-bold">Logout</a>
 
-                    <button class="styled-button">
-                        <a style="color: white; text-decoration: none; " href="../SignUP.php">Sign Up</a>
-                        <div class="inner-button">
+                <?php else: ?>
+                    <form class="d-flex ">
+                        <button class="button">
                             <svg
-                                id="Arrow"
-                                viewBox="0 0 32 32"
                                 xmlns="http://www.w3.org/2000/svg"
-                                height="30px"
-                                width="30px"
-                                class="icon">
-                                <defs>
-                                    <linearGradient y2="100%" x2="100%" y1="0%" x1="0%" id="iconGradient">
-                                        <stop style="stop-color:#FFFFFF;stop-opacity:1" offset="0%"></stop>
-                                        <stop style="stop-color:#AAAAAA;stop-opacity:1" offset="100%"></stop>
-                                    </linearGradient>
-                                </defs>
-                                <path
-                                    fill="url(#iconGradient)"
-                                    d="M4 15a1 1 0 0 0 1 1h19.586l-4.292 4.292a1 1 0 0 0 1.414 1.414l6-6a.99.99 0 0 0 .292-.702V15c0-.13-.026-.26-.078-.382a.99.99 0 0 0-.216-.324l-6-6a1 1 0 0 0-1.414 1.414L24.586 14H5a1 1 0 0 0-1 1z"></path>
+                                width="1.25rem"
+                                height="1.25rem"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2">
+                                <path d="M12 19v-7m0 0V5m0 7H5m7 0h7"></path>
                             </svg>
-                        </div>
-                    </button>
+                            <a style="color: white; text-decoration: none; " href="../Login.php">Login</a>
+                        </button>
+
+                        <div style="width:1px; height:40px; background-color:#000; margin: 0 1.5rem;"></div>
+
+                        <button class="styled-button">
+                            <a style="color: white; text-decoration: none; " href="../SignUP.php">Sign Up</a>
+                            <div class="inner-button">
+                                <svg
+                                    id="Arrow"
+                                    viewBox="0 0 32 32"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    height="30px"
+                                    width="30px"
+                                    class="icon">
+                                    <defs>
+                                        <linearGradient y2="100%" x2="100%" y1="0%" x1="0%" id="iconGradient">
+                                            <stop style="stop-color:#FFFFFF;stop-opacity:1" offset="0%"></stop>
+                                            <stop style="stop-color:#AAAAAA;stop-opacity:1" offset="100%"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <path
+                                        fill="url(#iconGradient)"
+                                        d="M4 15a1 1 0 0 0 1 1h19.586l-4.292 4.292a1 1 0 0 0 1.414 1.414l6-6a.99.99 0 0 0 .292-.702V15c0-.13-.026-.26-.078-.382a.99.99 0 0 0-.216-.324l-6-6a1 1 0 0 0-1.414 1.414L24.586 14H5a1 1 0 0 0-1 1z"></path>
+                                </svg>
+                            </div>
+                        </button>
 
 
 
 
 
-                </form>
 
+                    </form>
+
+                <?php endif; ?>
             </div>
+
+
+        </div>
         </div>
     </nav>
 

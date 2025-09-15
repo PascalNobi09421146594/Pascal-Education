@@ -40,7 +40,7 @@
                         <h1 class="display-5 fw-bolder text-dark mb-2">Pascal's Education</h1>
                         <p class="lead fw-normal text-dark-50 mb-4">Find your professional tutors to suit budget. <br>We are here to give the best online class experience.</p>
                         <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                            <a class="btn btn-success btn-lg px-4 me-sm-3" href="#features">Find a tutor</a>
+                            <a class="btn btn-success btn-lg px-4 me-sm-3" href="teacherView.php">Find a tutor</a>
                             <a class="btn btn-outline-dark btn-lg px-4" href="#!">Learn More</a>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                     <h2 class="fw-bolder mb-0">How Pascal Education system works</h2>
                     <br>
                     <br><br><br><br><br><br><br>
-                    <a class="btn btn-outline-dark btn-lg px-4" href="#!">Get Started</a>
+                    <a class="btn btn-outline-dark btn-lg px-4" href="order.php">Get Started</a>
 
 
                 </div>
@@ -111,7 +111,7 @@
                         <img width="600px" height="350px" class="card-img-top" src="../Picture/Teacher1.jpg" alt="teacher photo" />
                         <div class="card-body p-4">
                             <div class="badge bg-primary bg-gradient rounded-pill mb-2">Top</div>
-                            <a class="text-decoration-none link-dark stretched-link" href="#!">
+                            <a class="text-decoration-none link-dark stretched-link" href="teacherView.php">
                                 <h5 class="card-title mb-3 fw-bold"> Amy <br><br> BA/MA English, <br> Drama and Education University of Cambridge</h5>
                             </a>
                             <p class="card-text mb-0">I am flexible, dedicated and personal in my approach, making what seems complex and alien seem relevant and applicable - and therefore more memorable!.</p>
@@ -141,7 +141,7 @@
 
                         <div class="card-body p-4">
                             <div class="badge bg-primary bg-gradient rounded-pill mb-2">Top</div>
-                            <a class="text-decoration-none link-dark stretched-link" href="#!">
+                            <a class="text-decoration-none link-dark stretched-link" href="teacherView.php">
                                 <h5 class="card-title mb-3 fw-bold"> Dr.Pascal Nobi <br><br> Doctorate, <br>University College London: Institute of Education; Postgraduate in Philosophy: Birkbeck College, University of London; MA in Design: UAL Central Saint Martins;</h5>
                             </a>
                             <p class="card-text mb-0">Qualified secondary Computer Science and Math teacher with 2+ years of experience teaching and tutoring. A year experience in volunteering.</p>
@@ -172,7 +172,7 @@
 
                         <div class="card-body p-4">
                             <div class="badge bg-primary bg-gradient rounded-pill mb-2">Top</div>
-                            <a class="text-decoration-none link-dark stretched-link" href="#!">
+                            <a class="text-decoration-none link-dark stretched-link" href="teacherView.php">
                                 <h5 class="card-title mb-3 fw-bold">Samantha <br><br> BA, University of Texas at Austin</h5>
                             </a>
                             <p class="card-text mb-0">Qualified secondary Maths and Biology teacher with 15+ years of experience teaching and tutoring. Published academic and educational content writer. Former medical scribe.</p>
@@ -201,7 +201,7 @@
             </div>
 
             <div class="d-flex justify-content-center align-items-center" >
-                <a class="btn btn-outline-dark btn-lg px-4" href="#!">More Tutor</a>
+                <a class="btn btn-outline-dark btn-lg px-4" href="teacherView.php">More Tutor</a>
             </div>
             <!-- Call to action-->
             <aside class="bg-warning bg-gradient rounded-3 p-4 p-sm-5 mt-5">
@@ -213,7 +213,7 @@
                     <div class="ms-xl-4">
                         <div class="input-group mb-2">
                             <input class="form-control" type="text" placeholder="Email address..." aria-label="Email address..." aria-describedby="button-newsletter" />
-                            <button class="btn btn-outline-light" id="button-newsletter" name="button" type="button">Sign up</button>
+                            <a href="SignUP.php"><button class="btn btn-outline-light" id="button-newsletter" name="button" type="button">Sign up</button></a>
                         </div>
                         <div class="small text-black-50">We care about privacy, and will never share your data.</div>
                     </div>

@@ -32,6 +32,28 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['product'])) {
     header("Location: cart.php"); // redirect to cart after adding
     exit();
 }
+
+
+//search
+$search = $_GET['search'] ?? '';
+
+$sql = "SELECT p.productID, p.productName, p.price, p.description, p.qty, p.imgPath, c.catName as category
+        FROM products p
+        JOIN category c ON p.category = c.catID";
+
+if (!empty($search)) {
+    $sql .= " WHERE p.productName LIKE :search OR c.catName LIKE :search";
+}
+
+$stmt = $conn->prepare($sql);
+
+if (!empty($search)) {
+    $stmt->execute(['search' => "%$search%"]);
+} else {
+    $stmt->execute();
+}
+
+$products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>

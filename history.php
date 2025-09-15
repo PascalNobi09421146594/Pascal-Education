@@ -3,12 +3,13 @@ session_start();
 require_once "dbconnect.php";
 
 // // 1️⃣ Check login
-// if (!isset($_SESSION['UID'])) {
-//     header("Location: login.php?redirect=history.php");
-//     exit();
-// }
+if (!isset($_SESSION['user']['UID'])) {
+        header("Location: login.php?redirect=history.php");
+exit();
+}
 
-$user_id = $_SESSION['UID'];
+
+$user_id = $_SESSION['user']['UID'];
 
 // 2️⃣ Fetch orders & related products
 $sql = "SELECT o.orderID, o.orderDate, p.ProductName, p.price, od.quantity

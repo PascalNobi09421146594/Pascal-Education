@@ -19,16 +19,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($user['role'] === 'admin') {
             $_SESSION['admin'] = [
                 'UID' => $user['UID'],
-                'username' => $user['username']
+                'username' => $user['username'],
+                'email' => $user['email']
             ];
             header("Location: ../admin/dashboard.php");
             exit();
         } else {
             $_SESSION['user'] = [
                 'UID' => $user['UID'],
-                'username' => $user['username']
+                'username' => $user['username'],
+                'email' => $user['email']
             ];
-            header("Location: order.php"); // Redirect regular users to order page
+            header("Location: index.php"); // Redirect regular users to order page
             exit();
         }
     } else {
