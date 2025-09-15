@@ -2,54 +2,28 @@
 require_once "dbconnect.php";
 session_start();
 
-if (!isset($_SESSION['UID'])) {
+if (!isset($_SESSION['user']['UID'])) {
     header("Location: login.php");
     exit();
 }
 
-$UID = $_SESSION['UID'];
-
+$UID = $_SESSION['user']['UID']; // ✅ fixed UID from session
 $cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
 
-// Handle remove item
+// Remove item from cart
 if (isset($_GET['remove'])) {
     unset($_SESSION['cart'][$_GET['remove']]);
     header("Location: cart.php");
     exit();
 }
 
-// Handle order submission (Checkout)
+// ✅ Redirect to checkout page instead of placing order
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['checkout'])) {
-    if (!empty($cart)) {
-        $conn->beginTransaction();
-        try {
-            // Insert into orders
-            $orderSql = "INSERT INTO orders (userID, orderDate) VALUES (?, CURDATE())";
-            $orderStmt = $conn->prepare($orderSql);
-            $orderStmt->execute([$UID]);
-            $orderID = $conn->lastInsertId();
-
-            // Insert order details
-            foreach ($cart as $productID => $item) {
-                $qty = $item['qty'];
-                $detailSql = "INSERT INTO orderdetails (orderID, productID, quantity) VALUES (?, ?, ?)";
-                $detailStmt = $conn->prepare($detailSql);
-                $detailStmt->execute([$orderID, $productID, $qty]);
-            }
-
-            $conn->commit();
-            unset($_SESSION['cart']); // Clear cart
-            header("Location: ch.php?orderID=" . $orderID);
-            exit();
-
-        } catch (Exception $e) {
-            $conn->rollBack();
-            echo "Checkout failed: " . $e->getMessage();
-        }
-    }
+    header("Location: checkout.php");
+    exit();
 }
 
-// Fetch course details for display
+// Fetch products in cart
 if (!empty($cart)) {
     $ids = implode(',', array_keys($cart));
     $sql = "SELECT ProductID, ProductName, price FROM products WHERE ProductID IN ($ids)";
@@ -95,22 +69,22 @@ if (!empty($cart)) {
                     $grandTotal += $total;
                 ?>
                     <tr>
-                        <td><?php echo htmlspecialchars($course['ProductName']); ?></td>
-                        <td>$<?php echo $course['price']; ?></td>
-                        <td><?php echo $qty; ?></td>
-                        <td>$<?php echo $total; ?></td>
-                        <td><a href="?remove=<?php echo $course['ProductID']; ?>" class="btn btn-danger btn-sm">Remove</a></td>
+                        <td><?= htmlspecialchars($course['ProductName']); ?></td>
+                        <td>$<?= $course['price']; ?></td>
+                        <td><?= $qty; ?></td>
+                        <td>$<?= $total; ?></td>
+                        <td><a href="?remove=<?= $course['ProductID']; ?>" class="btn btn-danger btn-sm">Remove</a></td>
                     </tr>
                 <?php endforeach; ?>
                 <tr class="table-info">
                     <td colspan="3"><strong>Grand Total</strong></td>
-                    <td colspan="2"><strong>$<?php echo $grandTotal; ?></strong></td>
+                    <td colspan="2"><strong>$<?= $grandTotal; ?></strong></td>
                 </tr>
                 </tbody>
             </table>
 
             <div class="text-center">
-                <button type="submit" name="checkout" class="btn btn-primary btn-lg">Checkout</button>
+                <button type="submit" name="checkout" class="btn btn-primary btn-lg">Proceed to Checkout</button>
             </div>
         </form>
     <?php endif; ?>

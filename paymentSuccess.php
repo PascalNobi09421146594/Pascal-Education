@@ -25,7 +25,7 @@
   <div class="text-success display-3 mb-3">&#10003;</div>
   <h3 class="text-success">Payment Successful!</h3>
   <p class="text-muted">Thank you for your payment. Your IGCSE tutoring session has been booked successfully.</p>
-  <a href="index.html" class="btn btn-success w-100 mt-3">Go to Dashboard</a>
+  <a href="index.php" class="btn btn-success w-100 mt-3">Go to Dashboard</a>
 </div>
 
 </body>

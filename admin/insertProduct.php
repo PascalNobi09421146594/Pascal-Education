@@ -39,7 +39,7 @@ if (isset($_POST["insertBtn"])) {
             if ($flag) {
                 $message = "new product with id $id has been insered successfully!.";
                 $_SESSION['message'] = $message;
-                header("Location: ../customerView.php");
+                header("Location: ../order.php");
             } else {
             }
         } catch (Exception $e) {

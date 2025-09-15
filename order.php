@@ -3,12 +3,12 @@ session_start();
 require_once "dbconnect.php";
 
 // // Redirect if not logged in
-// if (!isset($_SESSION['UID'])) {
-//     header("Location: login.php");
-//     exit();
-// }
+if (!isset($_SESSION['user']['UID'])) {
+    header("Location: login.php");
+    exit();
+}
 
-// Fetch all products
+//Fetch all products
 try {
     $sql = "SELECT p.productID, p.productName, p.price, p.description, p.qty,
                    p.imgPath, c.catName as category
